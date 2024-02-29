@@ -5,7 +5,6 @@
   onMount(async function () {
       let number = Math.floor(Math.random() * (1000 - 1)) + 1;
       jQuery("#randnumber").html("<em>"+ number +"</em>");
-
       console.log("hallo")
       const response = await fetch("http://localhost:7878/allareas");
       const data = await response.json();
