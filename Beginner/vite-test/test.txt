@@ -1,0 +1,32 @@
+<script>
+  import { onMount } from 'svelte';
+  import jQuery from 'jquery';
+
+  onMount(
+    () => {
+      let number = Math.floor(Math.random() * (1000 - 1)) + 1;
+      jQuery("#randnumber").html("<em>"+ number +"</em>");
+
+    }
+  )
+        const fetchData = (async () => {
+        const response = await fetch('http://localhost:7879/allareas')
+        return response.json
+      })()
+</script>
+
+<main>
+  <h3>Raumplaner</h3>
+  <p>Übersicht</p>
+  <div id="randnumber"></div>
+{#await fetchData}
+  <p>...waiting</p>
+{:then data} 
+  <p>{data}</p>
+{/await}
+  <p>error</p>
+
+</main>
+<style>
+
+</style>
